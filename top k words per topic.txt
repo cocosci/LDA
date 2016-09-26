@@ -1,0 +1,28 @@
+Topic 0:
+1989
+protests
+Beijing
+People
+military
+
+Topic 1:
+Bayesian
+models
+learning
+Chinese
+computational
+
+Topic 2:
+man
+Tiananmen
+tanks
+Square
+power
+
+Topic 3:
+learning
+concepts
+subject
+inference
+Hu
+
