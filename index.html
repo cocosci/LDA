@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Latent Dirichlet Allocation (LDA) by cocosci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Latent Dirichlet Allocation (LDA)</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/cocosci/LDA" class="btn">View on GitHub</a>
+      <a href="https://github.com/cocosci/LDA/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/cocosci/LDA/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="ldalatent-dirichlet-allocation" class="anchor" href="#ldalatent-dirichlet-allocation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDA(Latent Dirichlet Allocation)</h1>
+
+<p>The current repository contains the LDA part of the extended abstract on CVPRW'16.
+I haven't got the chance to clean up the code. But if you are a beginner in graphical model/probabilistic Bayesian inference, or simply topic modeling, you may check this implementation based on collapsed Gibbs sampling. For details, please check my 10 pages technical report (again just a coarse version) on
+ <a href="http://pages.iu.edu/%7Ezhenk/report.pdf">http://pages.iu.edu/~zhenk/report.pdf</a>.</p>
+
+<pre><code>Author: Kai Zhen
+zhenk@umail.iu.edu
+www.zhenk.net
+School of informatics and computing, Indiana University.
+</code></pre>
+
+<h2>
+<a id="how-to-execute" class="anchor" href="#how-to-execute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to execute?</h2>
+
+<ul>
+<li>Navigate down to the LDACAFFE home directory.</li>
+<li>Type "make".</li>
+<li>Then type ./final 100 "toyinput.dat" 4 10 0.1 5 "file"</li>
+<li>By the way, it means ./final numiteration inputdata numtopic alpha beta numwordspertopic typeofinput</li>
+<li>It supports two types of input. The toy one contains all the docs in a single file. Each doc is just a line which can be quite long though. The second one contains all docs in a folder, each doc is a single file. To try the second case, you may want to type ./final 1000 "/nips12/" 10 0.5 0.1 5 "dir"</li>
+<li>By the way, it means ./final numiteration inputdata numtopic alpha beta numwordspertopic typeofinput</li>
+</ul>
+
+<h2>
+<a id="how-to-check-the-result" class="anchor" href="#how-to-check-the-result" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to check the result?</h2>
+
+<p>Results are in theta.txt(distribution of topics for docs), top k words per topic.txt(distribution of words for topics)</p>
+
+<hr>
+
+<p>Result in running all nips papers from 2012</p>
+
+<p>Topic 0:
+learning
+algorithm
+generalization
+training
+examples</p>
+
+<p>Topic 1:
+
+In
+model
+A
+data</p>
+
+<p>Topic 2:
+neurons
+neuron
+synaptic
+input
+visual</p>
+
+<p>Topic 3:
+frequency
+sound
+state
+system
+cue</p>
+
+<p>Topic 4:
+Markov
+language
+Bayesian
+sequence
+sampling</p>
+
+<p>Topic 5:
+nodes
+networks
+network
+node
+variational</p>
+
+<p>Topic 6:
+image
+images
+feature
+features
+mutual</p>
+
+<p>Topic 7:
+state
+policy
+belief
+states
+function</p>
+
+<p>Topic 8:
+sources
+source
+data
+nonlinear
+blind</p>
+
+<p>Topic 9:
+kernel
+set
+SVM
+
+solution</p>
+
+<h2>
+<a id="the-command-to-run-lda-for-that-result-final-1000-nips12-10-05-01-5-dir" class="anchor" href="#the-command-to-run-lda-for-that-result-final-1000-nips12-10-05-01-5-dir" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The command to run LDA for that result: ./final 1000 "/nips12/" 10 0.5 0.1 5 "dir"</h2>
+
+<p>The result for my toy example that really accompanies me for this month. Thank you toyinput.dat!</p>
+
+<p>Topic 0:
+Beijing
+protests
+party
+power</p>
+
+<p>Topic 1:
+learning
+concepts
+object
+human</p>
+
+<p>Topic 2:
+man
+1989
+Tiananmen
+tank</p>
+
+<p>Topic 3:
+Bayesian
+models
+cognitive
+intuitive</p>
+
+<p>How to run and get the above result? ./final 2000 "toyinput.dat" 4 0.5 0.1 4 "di"
+And then, sublime top\ k\ words\ per\ topic.txt</p>
+
+<p>0.003106 0.208075 0.003106 0.785714 </p>
+
+<p>0.009804 0.166667 0.009804 0.813725 </p>
+
+<p>0.015152 0.954545 0.015152 0.015152 </p>
+
+<p>0.833333 0.038462 0.115385 0.012821 </p>
+
+<p>0.011905 0.011905 0.940476 0.035714 </p>
+
+<p>0.006329 0.905063 0.069620 0.018987 </p>
+
+<p>0.065476 0.017857 0.910714 0.005952 </p>
+
+<p>0.524510 0.044118 0.426471 0.004902 </p>
+
+<p>0.801587 0.007937 0.150794 0.039683 </p>
+
+<p>doc1</p>
+
+<p>My colleagues and I in the Computational Cognitive Science group study one of the most basic and distinctively human aspects of cognition: the ability to learn so much about the world, rapidly and flexibly. Given just a few relevant experiences, even young children can infer the meaning of a new word, the hidden properties of an object or substance, or the existence of a new causal relation or social rule.These inferences go far beyond the data given: after seeing three or four examples of "horses", a two-year-old will confidently judge whether any new entity is a horse or not, and she will be mostly correct, except for the occasional donkey or camel. We want to understand these everyday inductive leaps in computational terms. What is the underlying logic that supports reliable generalization from so little data? What are its cognitive and neural mechanisms, and how can we build more powerful learning machines based on the same principles? These questions demand a multidisciplinary approach. Our group's research combines computational models (drawing chiefly on Bayesian statistics, probabilistic generative models, and probabilistic programming) with behavioral experiments in adults and children. Our models make strong quantitative predictions about behavior, but more importantly, they attempt to explain why cognition works, by viewing it as an approximation to ideal statistical inference given the structure of natural tasks and environments. Current research in our group explores the computational basis of many aspects of human cognition: learning concepts, judging similarity, inferring causal connections, forming perceptual representations, learning word meanings and syntactic principles in natural language, noticing coincidences and predicting the future, inferring the mental states of other people, and constructing intuitive theories of core domains, such as intuitive physics, psychology, biology, or social structure.</p>
+
+<p>doc2</p>
+
+<p>We present an introduction to Bayesian inference as it is used in probabilistic models of cognitive development. Our goal is to provide an intuitive and accessible guide to the what, the how, and the why of the Bayesian approach: what sorts of problems and data the framework is most relevant for, and how and why it may be useful for developmentalists. We emphasize a qualitative understanding of Bayesian inference, but also include information about additional resources for those interested in the cognitive science applications, mathematical foundations, or machine learning details in more depth. In addition, we discuss some important interpretation issues that often arise when evaluating Bayesian models in cognitive science.</p>
+
+<p>doc3</p>
+
+<p>One-shot learning is an object categorization problem of current research interest in computer vision. Whereas most machine learning based object categorization algorithms require training on hundreds or thousands of images and very large datasets, one-shot learning aims to learn information about object categories from one, or only a few, training images.</p>
+
+<p>doc4</p>
+
+<p>Jiang Zemin came to power unexpectedly as a 'compromise candidate' following the Tiananmen Square protests of 1989, when he replaced Zhao Ziyang as General Secretary after Zhao was ousted for his support for the student movement. With the waning influence of Eight Elders due to old age and with the death of Deng Xiaoping, Jiang consolidated his hold on power and became the "paramount leader" of the country in the 1990s.</p>
+
+<p>doc5</p>
+
+<p>A man who stood in front of a column of tanks on June 5, 1989, the morning after the Chinese military had suppressed the Tiananmen Square protests of 1989 by force, became known as the Tank Man, Unknown Protester or Unknown Rebel. As the lead tank maneuvered to pass by the man, he repeatedly shifted his position in order to obstruct the tank's attempted path around him. The incident was filmed and seen worldwide.</p>
+
+<p>doc6</p>
+
+<p>People learning new concepts can often generalize successfully from just a single example, yet machine learning algorithms typically require tens or hundreds of examples to perform with similar accuracy. People can also use learned concepts in richer ways than conventional algorithms—for action, imagination, and explanation. We present a computational model that captures these human learning abilities for a large class of simple visual concepts: handwritten characters from the world’s alphabets. The model represents concepts as simple programs that best explain observed examples under a Bayesian criterion. On a challenging one-shot classification task, the model achieves human-level performance while outperforming recent deep learning approaches. We also present several “visual Turing tests” probing the model’s creative generalization abilities, which in many cases are indistinguishable from human behavior.</p>
+
+<p>doc7</p>
+
+<p>The incident took place near Tiananmen on Chang'an Avenue, which runs east-west along the north end of Tiananmen Square in Beijing, China, on June 5, 1989, one day after the Chinese government's violent crackdown on the Tiananmen protests.[4] The man stood in the middle of the wide avenue, directly in the path of a column of approaching Type 59 tanks. He wore a white shirt and black trousers, and he held a shopping bag.[5] As the tanks came to a stop, the man gestured towards the tanks with his bag. In response, the lead tank attempted to drive around the man, but the man repeatedly stepped into the path of the tank in a show of nonviolent action.[6] After repeatedly attempting to go around rather than crush the man, the lead tank stopped its engines, and the armored vehicles behind it seemed to follow suit. There was a short pause with the man and the tanks having reached a quiet, still impasse.</p>
+
+<p>doc8</p>
+
+<p>During the 1989 student demonstrations in Beijing, the Chinese People's Liberation Army (PLA) played a decisive role in enforcing martial law, suppressing the demonstrations by force and upholding the authority of the Chinese Communist Party. The scale of the military's mobilization for a domestic event and degree of bloodshed inflicted against civilians were unprecedented both in the history of the People's Republic and the history of Beijing, a city with a tradition of popular protests against ruling authorities dating back to the May Fourth Movement of 1919. The subject of the Tiananmen protests in general and the military's role in the crackdown remains forbidden from public discussion in China.[4] The killings in Beijing continue to taint the legacies of the party elders, led by Deng Xiaoping, and weigh on the generation of leaders whose careers advanced as their more moderate colleagues were purged or sidelined at the time.[4] Within China, the role of the military in 1989 remains a subject of private discussion within the ranks of the party leadership and PLA.[4] Only outside of China is the subject part of the public discourse.</p>
+
+<p>doc9</p>
+
+<p>The protests were triggered in April 1989 by the death of former Communist Party General Secretary Hu Yaobang, a liberal reformer who was deposed after losing a power struggle with hardliners over the direction of political and economic reforms.[8] University students marched and gathered in Tiananmen Square to mourn. Hu had also voiced grievances against inflation, limited career prospects, and corruption of the party elite.[9] The protesters called for government accountability, freedom of the press, freedom of speech, and the restoration of workers' control over industry.[10][11] At the height of the protests, about a million people assembled in the Square.[12] Most of them were university students in Beijing.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/cocosci/LDA">Latent Dirichlet Allocation (LDA)</a> is maintained by <a href="https://github.com/cocosci">cocosci</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
