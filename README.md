@@ -2,6 +2,7 @@
 The current repository contains the LDA part of the project.
 For a better organized repository, please check
 https://github.com/cocosci/LDA_JAVA.
+
 ##How to execute?
 
 <ul>
